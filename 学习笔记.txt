@@ -1,0 +1,29 @@
+ros工作空间配置ur机械臂功能包：https://blog.csdn.net/weixin_54571363/article/details/129103504
+
+关节空间与笛卡尔空间的区别
+关节空间中各个关节间的规划是独立、互补相关的，即两点间的轨迹是任意曲线（正运动学、逆运动学）
+笛卡尔空间中两点间的轨迹则是可控制的，可设置为直线、曲线
+
+
+ur3e启动命令
+1.roslaunch ur_robot_driver ur3e_bringup.launch limited:=true robot_ip:=192.168.1.10
+
+2.ur示教器配置好ip后运行externed control程序
+
+如示教器报错，可重新配置ip后，新建externed control程序运行
+ip配置如下：
+	示教器ip与pc的ip需在同一网段内
+	URCAP的ip需与pc的ip一致，且端口需设置为50002
+	网关均设置为0.0.0.0，子网掩码为255.255.255.0
+	本人配置：
+		示教器：192.168.1.10
+		pc：192.168.1.102
+		URCAP：192.168.1.102
+		
+3.roslaunch ur3e_moveit_config ur3e_moveit_planning_execution.launch limited:=true
+
+4.roslaunch ur3e_moveit_config moveit_rviz.launch rviz_config:=$(rospack find ur3_moveit_config)/launch/moveit.rviz
+
+
+
+robotiq 2f-85
