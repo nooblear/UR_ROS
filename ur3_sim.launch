@@ -1,0 +1,15 @@
+<launch>
+        <!-- Launch Gazebo  -->
+    <include file="$(find ur3_moveit_config)/launch/ur3_moveit_planning_execution.launch" >
+        <arg name="sim" value="true" />
+    </include>
+
+    <!-- ros_control arm launch file -->
+    <include file="$(find ur3_moveit_config)/launch/moveit_rviz.launch" />   
+
+    <!-- ros_control trajectory control dof arm launch file -->
+    <include file="$(find ur_gazebo)/launch/ur3_bringup.launch" />
+
+    <!-- moveit launch file -->
+    <!-- <include file="$(find probot_anno_moveit_config)/launch/moveit_planning_execution.launch" /> -->
+</launch>
